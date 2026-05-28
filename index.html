@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>虞婧的作品集 - 个人艺术作品集</title>
+    <!-- 引入强大的 Tailwind CSS 样式库 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- 引入 Alpine.js 负责点击和过滤逻辑 -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        /* 丝滑滚动效果 */
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<!-- 💡 背景改成了纯净的柔白 [#fbfbfb]，文字改成了高质感的深炭黑 [#1a1a1a] -->
+<body class="bg-[#fbfbfb] text-[#1a1a1a] font-sans antialiased" x-data="{ currentFilter: 'all', activeImage: null }">
+
+    <!-- 1. 顶部导航栏 -->
+    <nav class="fixed top-0 left-0 w-full z-40 bg-[#fbfbfb]/80 backdrop-blur-md border-b border-black/5 py-6 px-8 md:px-16 flex justify-between items-center">
+        <a href="#" class="text-sm font-bold tracking-widest uppercase hover:text-gray-500 transition-colors">虞婧</a>
+        <div class="flex space-x-8 text-xs uppercase tracking-wider text-gray-500">
+            <a href="#works" class="hover:text-black transition-colors">Works</a>
+            <a href="#about" class="hover:text-black transition-colors">About</a>
+        </div>
+    </nav>
+
+    <!-- 2. 主体内容区 -->
+    <main class="pt-36 px-8 md:px-16 max-w-7xl mx-auto">
+        
+        <!-- 作品区域 -->
+        <section id="works" class="mb-32">
+            <!-- 分类过滤器 -->
+            <div class="flex space-x-8 mb-12 text-xs uppercase tracking-widest border-b border-black/5 pb-4">
+                <button @click="currentFilter = 'all'" :class="currentFilter === 'all' ? 'text-black font-bold border-b border-black -mb-[17px] pb-4' : 'text-gray-400 hover:text-black'" class="transition-all cursor-pointer">All</button>
+                <button @click="currentFilter = 'photography'" :class="currentFilter === 'photography' ? 'text-black font-bold border-b border-black -mb-[17px] pb-4' : 'text-gray-400 hover:text-black'" class="transition-all cursor-pointer">Photography</button>
+                <button @click="currentFilter = 'art'" :class="currentFilter === 'art' ? 'text-black font-bold border-b border-black -mb-[17px] pb-4' : 'text-gray-400 hover:text-black'" class="transition-all cursor-pointer">Art</button>
+            </div>
+
+            <!-- 作品网格 (Grid) -->
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 [column-fill:_balance]">
+                <div x-show="currentFilter === 'all' || currentFilter === 'art'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/art2.PNG'">
+                    <img src="images/art2.PNG" alt="绘画作品 2" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Art</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">想</h3>
+                    </div>
+                </div>
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo2.JPG'">
+                    <img src="images/photo2.JPG" alt="摄影作品 2" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 2</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo3.JPG'">
+                    <img src="images/photo3.JPG" alt="摄影作品 3" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 3</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo4.JPG'">
+                    <img src="images/photo4.JPG" alt="摄影作品 4" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 4</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo5.JPG'">
+                    <img src="images/photo5.JPG" alt="摄影作品 5" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 5</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo6.JPG'">
+                    <img src="images/photo6.JPG" alt="摄影作品 6" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 6</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo7.JPG'">
+                    <img src="images/photo7.JPG" alt="摄影作品 7" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 7</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo8.JPG'">
+                    <img src="images/photo8.JPG" alt="摄影作品 8" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 8</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo9.JPG'">
+                    <img src="images/photo9.JPG" alt="摄影作品 9" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 9</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo10.JPG'">
+                    <img src="images/photo10.JPG" alt="摄影作品 10" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 10</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo11.JPG'">
+                    <img src="images/photo11.JPG" alt="摄影作品 11" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 11</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo12.JPG'">
+                    <img src="images/photo12.JPG" alt="摄影作品 12" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 12</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo13.JPG'">
+                    <img src="images/photo13.JPG" alt="摄影作品 13" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 13</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo14.JPG'">
+                    <img src="images/photo14.JPG" alt="摄影作品 14" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 14</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo15.JPG'">
+                    <img src="images/photo15.JPG" alt="摄影作品 15" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 15</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo16.JPG'">
+                    <img src="images/photo16.JPG" alt="摄影作品 16" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 16</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo17.JPG'">
+                    <img src="images/photo17.JPG" alt="摄影作品 17" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 17</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo18.JPG'">
+                    <img src="images/photo18.JPG" alt="摄影作品 18" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 18</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'photography'" 
+                     class="break-inside-avoid bg-gray-50 border border-black/5 rounded-sm cursor-pointer mb-8 group relative overflow-hidden"
+                     @click="activeImage = 'images/photo19.JPG'">
+                    <img src="images/photo19.JPG" alt="摄影作品 19" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Photography</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">摄影作品 19</h3>
+                    </div>
+                </div>
+
+                ```
+
+---
+           
+
+                <!-- 【作品 2：绘画样例】 -->
+                <div x-show="currentFilter === 'all' || currentFilter === 'art'" 
+               
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'art'" 
+                     x-transition.duration.400ms
+                     class="group relative overflow-hidden bg-gray-50 border border-black/5  rounded-sm cursor-pointer"
+                     @click="activeImage = 'images/art3.PNG'">
+                    <img src="images/art3.PNG" alt="绘画作品 3" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Art</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">海边</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'art'" 
+                     x-transition.duration.400ms
+                     class="group relative overflow-hidden bg-gray-50 border border-black/5  rounded-sm cursor-pointer"
+                     @click="activeImage = 'images/art4.PNG'">
+                    <img src="images/art4.PNG" alt="绘画作品 4" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Art</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">秋天</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'art'" 
+                     x-transition.duration.400ms
+                     class="group relative overflow-hidden bg-gray-50 border border-black/5  rounded-sm cursor-pointer"
+                     @click="activeImage = 'images/art5.PNG'">
+                    <img src="images/art5.PNG" alt="绘画作品 5" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Art</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">放寒假的一天</h3>
+                    </div>
+                </div>
+
+                <div x-show="currentFilter === 'all' || currentFilter === 'art'" 
+                     x-transition.duration.400ms
+                     class="group relative overflow-hidden bg-gray-50 border border-black/5  rounded-sm cursor-pointer"
+                     @click="activeImage = 'images/art6.PNG'">
+                    <img src="images/art6.PNG" alt="绘画作品 6" class="w-full h-auto object-contain group-hover:scale-102 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Art</p>
+                        <h3 class="text-xs font-medium tracking-wide text-gray-800">心</h3>
+           section         </div>
+         
+            </div>
+        </>
+
+        <!-- 3. 关于我区域 -->
+
+    </main>
+<section id="about" class="w-full max-w-7xl mx-auto px-4 md:px-8 py-24 border-t border-black/5 grid grid-cols-1 md:grid-cols-2 gap-16 items-center blockclear">
+            <div class="space-y-6">
+                <h2 class="text-lg uppercase tracking-widest font-bold text-gray-400">About</h2>
+                <p class="text-gray-600 leading-relaxed text-sm tracking-wide">
+                    我是虞婧，这里展示了我近期的插画创作与摄影作品，感谢你的驻足观看。
+                </p>
+            </div>
+            <div class="aspect-square max-w-xs mx-auto md:ml-auto w-full bg-gray-50 rounded-sm overflow-hidden border border-black/5">
+                <img src="images/avatar.JPG" alt="个人头像" class="w-full h-full object-cover">
+            </div>
+        </section>
+    <!-- 4. 画廊大图灯箱弹窗（全黑背景，更聚焦作品本身） -->
+    <div x-show="activeImage" 
+         x-transition.opacity.duration.300ms
+         class="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 cursor-zoom-out"
+         @click="activeImage = null"
+         style="display: none;">
+        <img :src="activeImage" class="max-w-full max-h-[90vh] object-contain select-none">
+        <span class="absolute top-6 right-6 text-gray-500 text-xs tracking-widest uppercase">Click anywhere to close</span>
+    </div>
+
+</body>
+</html>
